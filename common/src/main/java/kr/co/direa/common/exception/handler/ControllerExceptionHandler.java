@@ -17,8 +17,8 @@ public class ControllerExceptionHandler {
     public ResponseEntity<ApiResponse<Void>> handleCustomException(CustomException ex) {
         log.error("CustomException: {}", ex.getMessage(), ex);
 
-        return ResponseEntity.status(ex.getErrorCode().getStatus())
-                .body(ApiResponse.error(ex.getErrorCode()));
+        return ResponseEntity.status(ex.getCustomErrorCode().getStatus())
+                .body(ApiResponse.error(ex.getCustomErrorCode()));
     }
 
     @ExceptionHandler(Exception.class)

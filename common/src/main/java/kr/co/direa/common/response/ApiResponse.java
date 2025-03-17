@@ -17,7 +17,7 @@ public class ApiResponse<T> {
         return new ApiResponse<>(HttpStatus.OK.value(), "SUCCESS", "요청이 성공적으로 처리되었습니다.", data);
     }
 
-    public static ApiResponse<Void> error(CustomErrorCode errorCode) { // ✅ 기존 방식
-        return new ApiResponse<>(errorCode.getStatus(), errorCode.getRspCode(), errorCode.getRspMsg(), null);
+    public static ApiResponse<Void> error(CustomErrorCode customErrorCode) {
+        return new ApiResponse<>(customErrorCode.getStatus(), customErrorCode.getRspCode(), customErrorCode.getRspMsg(), null);
     }
 }

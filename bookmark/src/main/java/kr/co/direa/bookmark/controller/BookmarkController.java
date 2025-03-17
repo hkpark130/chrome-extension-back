@@ -1,5 +1,6 @@
 package kr.co.direa.bookmark.controller;
 
+import kr.co.direa.bookmark.dto.BookmarkResponseDto;
 import kr.co.direa.bookmark.entity.Bookmark;
 import kr.co.direa.bookmark.service.BookmarkService;
 import kr.co.direa.common.response.ApiResponse;
@@ -17,8 +18,8 @@ public class BookmarkController {
     private final BookmarkService bookmarkService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<Bookmark>> getBookmark(@PathVariable Long id) {
-        Bookmark bookmark = bookmarkService.getBookmarkById(id);
-        return ResponseEntity.ok(ApiResponse.success(bookmark));
+    public ResponseEntity<ApiResponse<BookmarkResponseDto>> getBookmark(@PathVariable Long id) {
+        BookmarkResponseDto bookmarkResponseDto = bookmarkService.getBookmarkById(id);
+        return ResponseEntity.ok(ApiResponse.success(bookmarkResponseDto));
     }
 }
