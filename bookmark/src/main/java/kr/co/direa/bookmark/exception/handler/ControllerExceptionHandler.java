@@ -1,4 +1,4 @@
-package kr.co.direa.common.exception.handler;
+package kr.co.direa.bookmark.exception.handler;
 
 import kr.co.direa.common.exception.CustomException;
 import kr.co.direa.common.exception.code.CustomErrorCode;
