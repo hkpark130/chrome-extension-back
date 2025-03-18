@@ -5,19 +5,21 @@ import kr.co.direa.common.exception.code.CustomErrorCode;
 import kr.co.direa.common.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Slf4j
-@RequiredArgsConstructor
-@RestControllerAdvice
+@ControllerAdvice
 public class ControllerExceptionHandler {
     @ExceptionHandler(CustomException.class)
     public ResponseEntity<ApiResponse<Void>> handleCustomException(CustomException ex) {
         log.error("CustomException: {}", ex.getMessage(), ex);
 
-        return ResponseEntity.status(ex.getCustomErrorCode().getStatus())
+        return ResponseEntity
+                .status(ex.getCustomErrorCode().getStatus())
                 .body(ApiResponse.error(ex.getCustomErrorCode()));
     }
 
