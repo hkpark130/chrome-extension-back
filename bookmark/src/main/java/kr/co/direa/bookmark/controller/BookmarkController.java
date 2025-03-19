@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/bookmarks")
 @RequiredArgsConstructor
-//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*")
 public class BookmarkController {
     private final BookmarkService bookmarkService;
 
@@ -27,5 +27,10 @@ public class BookmarkController {
     public ResponseEntity<ApiResponse<BookmarkResponseDto>> createBookmark(@RequestBody BookmarkRequestDto requestDto, HttpMethod httpMethod) {
         BookmarkResponseDto bookmarkResponseDto = bookmarkService.createBookmark(requestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.success(bookmarkResponseDto));
+    }
+
+    @GetMapping("/health")
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("OK");
     }
 }

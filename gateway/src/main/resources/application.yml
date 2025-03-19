@@ -15,15 +15,11 @@ spring:
           predicates:
             - Path=/bookmarks/**
 
-        - id: first-service
-          uri: lb://FIRST
-          predicates:
-            - Path=/first-service/**
-          filters:
-            - AddRequestHeader=first-request, first-요청
-            - AddResponseHeader=first-response, first-응답
-#            - CustomFilter
-
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://192.168.2.59:8080/realms/sso
 
 server:
   port: 8000
