@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/bookmarks")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class BookmarkController {
     private final BookmarkService bookmarkService;
 
