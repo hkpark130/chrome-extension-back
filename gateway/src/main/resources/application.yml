@@ -1,8 +1,8 @@
 constants:
-  keycloak-url: "https://keycloak.direa.synology.me"
+  # keycloak-url: "https://keycloak.direa.synology.me"
+  keycloak-url: "http://192.168.2.111:8080"
   realm: "sso"
-  client-secret: "PGECw0T1tVC5xlfPWwkjjchYwrnZc7eF"
-  frontend: "http://192.168.2.72:5173"
+  frontend: "http://192.168.56.1:5173"
 
 spring:
   application:
@@ -10,7 +10,6 @@ spring:
   cloud:
     gateway:
       default-filters:
-        - TokenRelay
         - name: GlobalFilter
           args:
             baseMessage: Spring Cloud Gateway Global Filter
@@ -21,31 +20,20 @@ spring:
           uri: lb://BOOKMARK
           predicates:
             - Path=/bookmarks/**
-          filters:
-            - RemoveRequestHeader=Cookie  # 🔥 프록시 요청 시 클라이언트 쿠키 전달 방지
 
   security:
     oauth2:
       resourceserver:
         jwt:
           issuer-uri: ${constants.keycloak-url}/realms/${constants.realm}
-      client:
-        provider:
-          keycloak:
-            issuer-uri: ${constants.keycloak-url}/realms/${constants.realm}
-            user-name-attribute: preferred_username
-        registration:
-          keycloak:
-            provider: keycloak
-            client-name: chrome-ext
-            client-id: chrome-ext
-            client-secret: ${constants.client-secret}
-            scope: openid,offline_access,profile
-            authorization-grant-type: authorization_code
-            redirect-uri: "http://192.168.2.72:8000/login/oauth2/code/keycloak"
+          jwk-set-uri: ${constants.keycloak-url}/realms/${constants.realm}/protocol/openid-connect/certs
 
 server:
   port: 8000
+
+logging:
+  level:
+    root: info
 
 eureka:
   client:
