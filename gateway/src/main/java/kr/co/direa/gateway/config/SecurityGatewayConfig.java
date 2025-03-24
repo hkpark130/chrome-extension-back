@@ -1,7 +1,6 @@
 package kr.co.direa.gateway.config;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -23,9 +22,6 @@ import java.util.*;
 @Configuration
 @EnableWebFluxSecurity
 public class SecurityGatewayConfig {
-    @Value("${constants.frontend}")
-    private String frontend;
-
     @Bean
     SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http
