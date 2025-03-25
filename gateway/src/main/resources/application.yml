@@ -1,41 +1,15 @@
-constants:
-  keycloak-url: "https://keycloak.direa.synology.me"
-  realm: "sso"
-
 spring:
   application:
     name: gateway
-  cloud:
-    gateway:
-      default-filters:
-        - name: GlobalFilter
-          args:
-            baseMessage: Spring Cloud Gateway Global Filter
-            preLogger: true
-            postLogger: true
-      routes:
-        - id: bookmark
-          uri: lb://BOOKMARK
-          predicates:
-            - Path=/bookmarks/**
+  config:
+    import: optional:configserver:http://localhost:8888
+  profiles:
+    active: local
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: ${constants.keycloak-url}/realms/${constants.realm}
-          jwk-set-uri: ${constants.keycloak-url}/realms/${constants.realm}/protocol/openid-connect/certs
-
-server:
-  port: 8000
-
-logging:
-  level:
-    root: info
-
-eureka:
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
+management:
+  endpoints:
+#    prometheus:
+#      enabled: true
+    web:
+      exposure:
+        include: "*"
