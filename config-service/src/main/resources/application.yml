@@ -2,12 +2,31 @@ server:
   port: 8888
 
 spring:
+  profiles:
+    active: native # git
+  rabbitmq:
+    host: 192.168.3.8
+    port: 5672
+    username: admin
+    password: admin
   application:
     name: config-service
   cloud:
+    bus:
+      enabled: true
     config:
+      name: config-service
       server:
-        git:
-          uri: file:///C:/Users/User/IdeaProjects/config-repo
-          default-label: master
-          searchPaths: prod, local
+        native:
+          search-locations: file:///D:/config-repo
+#      server:
+#        git:
+#          uri: file:///C://Users//User//IdeaProjects//config-repo
+#          default-label: master
+#          searchPaths: prod, local
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

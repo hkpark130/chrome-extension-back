@@ -1,4 +1,4 @@
-package kr.co.direa.bookmark.entity;
+package kr.co.direa.dashboard.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -6,14 +6,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
 @Setter
-@Table(name = "bookmarks")
+@Table(name = "dashboard")
 @Entity
 @NoArgsConstructor
-public class Bookmark extends BaseTimeEntity{
+public class Dashboard extends BaseTimeEntity{
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,15 +22,12 @@ public class Bookmark extends BaseTimeEntity{
 
     @Column(name = "user_id")
     private UUID userId;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "url")
-    private String url;
+
+    @OneToMany(mappedBy = "dashboard", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Widget> widgets;
 
     @Builder
-    public Bookmark(UUID userId, String name, String url) {
+    public Dashboard(UUID userId) {
         this.userId = userId;
-        this.name = name;
-        this.url = url;
     }
 }

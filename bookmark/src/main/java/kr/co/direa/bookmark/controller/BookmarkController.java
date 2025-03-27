@@ -5,8 +5,8 @@ import kr.co.direa.bookmark.dto.BookmarkResponseDto;
 import kr.co.direa.bookmark.service.BookmarkService;
 import kr.co.direa.common.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +17,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/bookmarks")
 @RequiredArgsConstructor
+@RefreshScope
 public class BookmarkController {
     private final BookmarkService bookmarkService;
 
