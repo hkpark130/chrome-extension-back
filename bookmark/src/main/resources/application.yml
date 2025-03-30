@@ -11,7 +11,7 @@ spring:
 #  config:
 #    import: "optional:configserver:http://localhost:8888"
   datasource:
-    url: jdbc:mariadb://192.168.3.8:3306/test
+    url: jdbc:mariadb://192.168.2.111:3306/test
     username: test
     password:
     driverClassName: org.mariadb.jdbc.Driver
@@ -25,7 +25,7 @@ spring:
         default_batch_fetch_size: 1000
 
   rabbitmq:
-    host: 192.168.3.8
+    host: 192.168.2.111
     port: 5672
     username: admin
     password: admin

@@ -12,6 +12,4 @@ public class WidgetPosition {
     private int y;
     private int w;
     private int h;
-    private boolean isBordered;
-    private String component;
 }

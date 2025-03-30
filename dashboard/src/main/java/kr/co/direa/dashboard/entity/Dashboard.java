@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,7 +25,7 @@ public class Dashboard extends BaseTimeEntity{
     private UUID userId;
 
     @OneToMany(mappedBy = "dashboard", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Widget> widgets;
+    private List<Widget> widgets = new ArrayList<>();
 
     @Builder
     public Dashboard(UUID userId) {

@@ -2,7 +2,7 @@ spring:
   application:
     name: dashboard
   datasource:
-    url: jdbc:mariadb://192.168.3.8:3306/test
+    url: jdbc:mariadb://192.168.2.111:3306/test
     username: test
     password:
     driverClassName: org.mariadb.jdbc.Driver

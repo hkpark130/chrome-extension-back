@@ -12,14 +12,14 @@ import java.util.UUID;
 public class DashboardResponseDto {
     private Long id;
     private UUID userId;
-    private List<WidgetResponseDto> widgets; // 위젯 정보 포함
+    private List<WidgetDto> widgets; // 위젯 정보 포함
 
     public static DashboardResponseDto fromEntity(Dashboard dashboard) {
         return DashboardResponseDto.builder()
                 .id(dashboard.getId())
                 .userId(dashboard.getUserId())
                 .widgets(dashboard.getWidgets().stream()
-                        .map(WidgetResponseDto::fromEntity)
+                        .map(WidgetDto::fromEntity)
                         .toList())
                 .build();
     }

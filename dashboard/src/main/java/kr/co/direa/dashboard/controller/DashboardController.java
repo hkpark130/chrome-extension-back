@@ -1,8 +1,7 @@
 package kr.co.direa.dashboard.controller;
 
-import kr.co.direa.common.response.ApiResponse;
-import kr.co.direa.dashboard.dto.DashboardRequestDto;
 import kr.co.direa.dashboard.dto.DashboardResponseDto;
+import kr.co.direa.dashboard.dto.WidgetDto;
 import kr.co.direa.dashboard.service.DashboardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -19,10 +18,18 @@ import java.util.UUID;
 public class DashboardController {
     private final DashboardService dashboardService;
 
+//    @GetMapping("/{userId}/{dashboardId}")
     @GetMapping("/{userId}")
-    public ResponseEntity<DashboardResponseDto> getOrCreateDashboard(@PathVariable UUID userId) {
-        DashboardResponseDto dashboard = dashboardService.getOrCreateDashboard(userId);
-        return ResponseEntity.ok(dashboard);
+    public ResponseEntity<DashboardResponseDto> getDashboard(@PathVariable UUID userId) {
+        DashboardResponseDto dashboardResponseDto = dashboardService.getDashboard(userId);
+        return ResponseEntity.ok(dashboardResponseDto);
+    }
+
+    @PutMapping("/{userId}/widgets")
+    public ResponseEntity<Void> updateWidgets(@PathVariable UUID userId,
+            @RequestBody List<WidgetDto> widgets) {
+        dashboardService.updateWidgets(userId, widgets);
+        return ResponseEntity.ok().build();
     }
 
 }
