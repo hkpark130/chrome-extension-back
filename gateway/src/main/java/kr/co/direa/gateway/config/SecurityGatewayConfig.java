@@ -27,19 +27,13 @@ public class SecurityGatewayConfig {
         http
             .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults())) // Keycloak JWT 인증
             .authorizeExchange(exchanges -> exchanges
-                .pathMatchers("/", "/favicon.ico", "/bookmarks/health", "/actuator/**",
+                .pathMatchers("/", "/favicon.ico", "/workspace/bookmark/health", "/actuator/**",
                         "/logout/**", "/oauth2/**", "/login/**",
-                        "/bookmarks/actuator/**"
+                        "/workspace/actuator/**", "/dashboard/actuator/**"
                 ).permitAll()
                 .pathMatchers("/admin").hasAuthority("Admin")
                 .anyExchange().authenticated() // 그 외 모든 요청은 인증 필요
             )
-//            .exceptionHandling(exceptionHandling -> exceptionHandling
-//                .authenticationEntryPoint((exchange, ex) -> {
-//                    log.error("Authentication failed: {}", ex.getMessage());
-//                    return exchange.getResponse().setComplete();
-//                })
-//            )
             .csrf(ServerHttpSecurity.CsrfSpec::disable) // REST API 사용 시 CSRF 필요 없음
             .cors(c->c.configurationSource(corsConfigurationSource()));
 

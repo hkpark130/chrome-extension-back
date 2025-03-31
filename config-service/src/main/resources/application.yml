@@ -2,23 +2,20 @@ server:
   port: 8888
 
 spring:
+  application:
+    name: config-service
   profiles:
     active: native # git
   rabbitmq:
-    host: 192.168.2.111
+    host: 192.168.3.8
     port: 5672
     username: admin
     password: admin
-  application:
-    name: config-service
   cloud:
-    bus:
-      enabled: true
     config:
-      name: config-service
       server:
         native:
-          search-locations: file:///C:/Users/gorjf/config-repo
+          search-locations: file:///D:/config-repo
 #      server:
 #        git:
 #          uri: file:///C://Users//User//IdeaProjects//config-repo
@@ -30,3 +27,6 @@ management:
     web:
       exposure:
         include: "*"
+  endpoint:
+    refresh:
+      enabled: true

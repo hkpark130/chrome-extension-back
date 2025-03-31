@@ -4,7 +4,6 @@ import kr.co.direa.dashboard.dto.DashboardResponseDto;
 import kr.co.direa.dashboard.dto.WidgetDto;
 import kr.co.direa.dashboard.service.DashboardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +13,6 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/dashboard")
 @RequiredArgsConstructor
-@RefreshScope
 public class DashboardController {
     private final DashboardService dashboardService;
 

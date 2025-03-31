@@ -1,64 +1,6 @@
-constants:
-  # keycloak-url: "https://keycloak.direa.synology.me"
-  keycloak-url: "http://192.168.2.111:8080"
-  realm: "sso"
-
 spring:
   application:
     name: gateway
-#  profiles:
-#    active: local
-#  cloud:
-#    config:
-#      name: gateway
-#    bus:
-#      enabled: true
-#  config:
-#    import: optional:configserver:http://localhost:8888
-  cloud:
-    gateway:
-      default-filters:
-        - name: GlobalFilter
-          args:
-            baseMessage: Spring Cloud Gateway Global Filter
-            preLogger: true
-            postLogger: true
-      routes:
-        - id: bookmark
-          uri: lb://BOOKMARK
-          predicates:
-            - Path=/bookmarks/**
-            - Method=GET,POST,PUT,DELETE,OPTIONS
-          filters:
-            - RewritePath=/bookmarks/actuator/(?<remaining>.*), /actuator/${remaining}
-
-        - id: dashboard
-          uri: lb://DASHBOARD
-          predicates:
-            - Path=/dashboard/**
-            - Method=GET,POST,PUT,DELETE,OPTIONS
-          filters:
-            - RewritePath=/dashboard/actuator/(?<remaining>.*), /actuator/${remaining}
-
-
-  rabbitmq:
-    host: 192.168.2.111
-    port: 5672
-    username: admin
-    password: admin
-
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: ${constants.keycloak-url}/realms/${constants.realm}
-          jwk-set-uri: ${constants.keycloak-url}/realms/${constants.realm}/protocol/openid-connect/certs
-
-server:
-  port: 8000
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+  config:
+    import:
+      - classpath:/bootstrap.yml
