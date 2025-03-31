@@ -11,6 +11,7 @@ import java.util.UUID;
 @Data
 @Builder
 public class MeetingRequestDto {
+    private UUID id;
     private UUID createdBy;
     private String title;
     private LocalDateTime start;
@@ -24,6 +25,7 @@ public class MeetingRequestDto {
      */
     public MeetingEvent toEntity(MeetingGroup group) {
         return MeetingEvent.builder()
+                .id(this.id)
                 .title(this.title)
                 .start(this.start)
                 .end(this.end)

@@ -10,7 +10,6 @@ import java.util.UUID;
 @Data
 @Builder
 public class MeetingResponseDto {
-
     private UUID id;
     private String title;
     private LocalDateTime start;

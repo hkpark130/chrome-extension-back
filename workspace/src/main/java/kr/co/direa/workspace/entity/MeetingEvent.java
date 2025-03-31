@@ -36,7 +36,8 @@ public class MeetingEvent extends BaseTimeEntity{
     private UUID createdBy;
 
     @Builder
-    public MeetingEvent(String title, LocalDateTime start, LocalDateTime end, MeetingGroup group, UUID createdBy) {
+    public MeetingEvent(UUID id, String title, LocalDateTime start, LocalDateTime end, MeetingGroup group, UUID createdBy) {
+        this.id = id;
         this.title = title;
         this.start = start;
         this.end = end;

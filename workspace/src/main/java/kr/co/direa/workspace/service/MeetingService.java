@@ -48,6 +48,7 @@ public class MeetingService {
             LocalDateTime shiftedEnd = request.getEnd().plusWeeks(i);
 
             MeetingEvent event = MeetingEvent.builder()
+                    .id(request.getId() != null ? request.getId() : UUID.randomUUID())
                     .title(request.getTitle())
                     .start(shiftedStart)
                     .end(shiftedEnd)
