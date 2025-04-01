@@ -22,6 +22,7 @@ import java.util.UUID;
 public class MeetingService {
     private final MeetingEventRepository eventRepository;
     private final MeetingGroupRepository groupRepository;
+    private final KeycloakService keycloakService;
 
     /**
      * 회의 저장 (단건 or 반복 포함)
@@ -63,7 +64,10 @@ public class MeetingService {
         List<MeetingEvent> saved = eventRepository.saveAll(events);
 
         return saved.stream()
-                .map(MeetingResponseDto::fromEntity)
+                .map(event -> {
+                    String userName = keycloakService.getFullNameByUserId(event.getCreatedBy());
+                    return MeetingResponseDto.fromEntity(event, userName);
+                })
                 .toList();
     }
 
@@ -72,7 +76,10 @@ public class MeetingService {
      */
     public List<MeetingResponseDto> getAllMeetings() {
         return eventRepository.findAll().stream()
-                .map(MeetingResponseDto::fromEntity)
+                .map(event -> {
+                    String userName = keycloakService.getFullNameByUserId(event.getCreatedBy());
+                    return MeetingResponseDto.fromEntity(event, userName);
+                })
                 .toList();
     }
 

@@ -7,7 +7,8 @@ spring:
   profiles:
     active: native # git
   rabbitmq:
-    host: 192.168.2.111
+    host: 192.168.3.8
+#    host: 192.168.2.111
     port: 5672
     username: admin
     password: admin
@@ -15,7 +16,8 @@ spring:
     config:
       server:
         native:
-          search-locations: file:///C:/Users/gorjf/config-repo
+          search-locations: file:///D:/config-repo
+#          search-locations: file:///C:/Users/gorjf/config-repo
 #      server:
 #        git:
 #          uri: file:///C://Users//User//IdeaProjects//config-repo

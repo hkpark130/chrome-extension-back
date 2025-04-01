@@ -15,15 +15,17 @@ public class MeetingResponseDto {
     private LocalDateTime start;
     private LocalDateTime end;
     private UUID createdBy;
+    private String createdByName;
     private UUID groupId;
 
-    public static MeetingResponseDto fromEntity(MeetingEvent event) {
+    public static MeetingResponseDto fromEntity(MeetingEvent event, String createdByName) {
         return MeetingResponseDto.builder()
                 .id(event.getId())
                 .title(event.getTitle())
                 .start(event.getStart())
                 .end(event.getEnd())
                 .createdBy(event.getCreatedBy())
+                .createdByName(createdByName)
                 .groupId(event.getGroup() != null ? event.getGroup().getId() : null)
                 .build();
     }

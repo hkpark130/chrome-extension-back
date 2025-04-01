@@ -1,6 +1,8 @@
 spring:
   application:
     name: workspace
+  jackson:
+    time-zone: Asia/Seoul
   config:
 #    import: "optional:configserver:http://192.168.2.44:8888"
     import:
