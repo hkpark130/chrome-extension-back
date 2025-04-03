@@ -10,7 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Service
 @RequiredArgsConstructor
 public class GitlabService {
-    @Qualifier("webClient")
+//    @Qualifier("webClient")
     private final WebClient.Builder webClientBuilder;
 
     public String getProjects() {

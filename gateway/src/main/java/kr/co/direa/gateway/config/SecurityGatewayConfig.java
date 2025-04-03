@@ -28,8 +28,8 @@ public class SecurityGatewayConfig {
             .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults())) // Keycloak JWT 인증
             .authorizeExchange(exchanges -> exchanges
                 .pathMatchers("/", "/favicon.ico", "/workspace/bookmark/health", "/actuator/**",
-                        "/logout/**", "/oauth2/**", "/login/**",
-                        "/workspace/actuator/**", "/dashboard/actuator/**"
+                        "/logout/**", "/oauth2/**", "/login/**", "/external/ai",
+                        "/workspace/actuator/**", "/dashboard/actuator/**", "/external/actuator/**"
                 ).permitAll()
                 .pathMatchers("/admin").hasAuthority("Admin")
                 .anyExchange().authenticated() // 그 외 모든 요청은 인증 필요
