@@ -1,0 +1,16 @@
+INSERT INTO lunch (name, weight) VALUES ('김치찌개', 3);
+INSERT INTO lunch (name, weight) VALUES ('된장찌개', 2);
+INSERT INTO lunch (name, weight) VALUES ('삼겹살', 3);
+INSERT INTO lunch (name, weight) VALUES ('제육', 3);
+INSERT INTO lunch (name, weight) VALUES ('비빔밥', 2);
+INSERT INTO lunch (name, weight) VALUES ('돈까스', 4);
+INSERT INTO lunch (name, weight) VALUES ('바지락 칼국수', 3);
+INSERT INTO lunch (name, weight) VALUES ('짬뽕', 3);
+INSERT INTO lunch (name, weight) VALUES ('냉면', 3);
+INSERT INTO lunch (name, weight) VALUES ('햄버거', 3);
+INSERT INTO lunch (name, weight) VALUES ('포케', 3);
+INSERT INTO lunch (name, weight) VALUES ('분식', 3);
+INSERT INTO lunch (name, weight) VALUES ('엽떡', 3);
+INSERT INTO lunch (name, weight) VALUES ('국밥', 3);
+INSERT INTO lunch (name, weight) VALUES ('우동', 3);
+INSERT INTO lunch (name, weight) VALUES ('라멘', 3);

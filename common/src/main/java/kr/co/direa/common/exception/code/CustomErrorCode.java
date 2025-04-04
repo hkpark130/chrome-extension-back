@@ -12,6 +12,8 @@ public enum CustomErrorCode {
 
     NOT_FOUND_DASHBOARD(404, "D001", "해당 대시보드가 없습니다."),
 
+    NOT_FOUND_MEMO(404, "M001", "해당 메모가 없습니다."),
+
 //    SCHEDULER_ERROR(500, "S001", "scheduler 에러"),
 //    MAIL_SEND_ERROR(500, "S002", "메일 송신중 에러"),
     INTERNAL_SERVER_ERROR(500, "D099", "서버 에러");

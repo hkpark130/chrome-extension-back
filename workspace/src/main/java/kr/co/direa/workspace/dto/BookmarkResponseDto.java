@@ -18,5 +18,4 @@ public class BookmarkResponseDto {
                 .url(bookmark.getUrl())
                 .build();
     }
-
 }
