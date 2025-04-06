@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Data
 @Entity
 @Table(name = "memo")
+@NoArgsConstructor
 public class Memo {
     @Id
     @Column(name = "id")

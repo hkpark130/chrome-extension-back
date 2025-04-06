@@ -29,34 +29,6 @@ import java.util.Map;
 public class GPTService {
     private final ChatModel chatModel; // OpenAiChatModel을 자동으로 주입받음
 
-//    public ResponseEntity<SseEmitter> streamToSse(String message) {
-//        SseEmitter emitter = new SseEmitter(0L); // 무제한 타임아웃 (원하면 30_000L 등 지정 가능)
-//
-//        Prompt prompt = new Prompt(message);
-//        Flux<ChatResponse> responseFlux = chatModel.stream(prompt); // OpenAI API 호출 (stream=true)
-//
-//        responseFlux
-//                .map(chatResponse -> chatResponse.getResult().getOutput().getContent())
-//                .filter(content -> content != null && !content.isBlank())
-//                .subscribe(
-//                        content -> {
-//                            try {
-//                                emitter.send(SseEmitter.event()
-//                                        .name("message")
-//                                        .data(content));
-//                            } catch (IOException e) {
-//                                emitter.completeWithError(e);
-//                            }
-//                        },
-//                        error -> emitter.completeWithError(error),
-//                        emitter::complete
-//                );
-//
-//        return ResponseEntity.ok()
-//                .header(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_EVENT_STREAM_VALUE)
-//                .body(emitter);
-//    }
-
     public Flux<ChatResponse> getStream(String message) {
         Prompt prompt = new Prompt(new UserMessage(message));
         return chatModel.stream(prompt);

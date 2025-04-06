@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@Import(WebClientConfig.class)
+//@Import(WebClientConfig.class)
 public class ExternalApplication {
 
     public static void main(String[] args) {
