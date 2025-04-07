@@ -2,7 +2,8 @@ package kr.co.direa.external.controller;
 
 import kr.co.direa.external.dto.PromptRequestDto;
 import kr.co.direa.external.dto.SseMessageDto;
-import kr.co.direa.external.dto.WeatherDto;
+import kr.co.direa.external.dto.WeatherRequestDto;
+import kr.co.direa.external.dto.WeatherResponseDto;
 import kr.co.direa.external.service.GPTService;
 import kr.co.direa.external.service.GitlabService;
 import kr.co.direa.external.service.WeatherService;
@@ -33,13 +34,16 @@ public class ExternalController {
         return gptService.getStream(request.getMessage())
                 .map(chatResponse -> {
                     String text = chatResponse.getResult().getOutput().getText();
-                    log.info("Got message: {}", text);
                     return ServerSentEvent.builder(new SseMessageDto(text)).build();
                 });
     }
 
-    @GetMapping("/weather")
-    public Mono<WeatherDto> getWeather() {
-        return weatherService.getWeatherData();
+    @GetMapping("/weather/{lat}/{lon}")
+    public Mono<WeatherResponseDto> getWeather(
+            @PathVariable String lat,
+            @PathVariable String lon
+    ) {
+        WeatherRequestDto requestDto = new WeatherRequestDto(Double.parseDouble(lat), Double.parseDouble(lon));
+        return weatherService.getWeatherData(requestDto);
     }
 }

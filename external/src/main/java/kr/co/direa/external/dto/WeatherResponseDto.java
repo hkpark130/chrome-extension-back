@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class WeatherDto {
+public class WeatherResponseDto {
     private String temperature; // 기온
     private String condition;   // 하늘 상태 (맑음, 흐림 등)
     private String location;    // 지역명 (예: 강남구)
-    private String iconClass;   // meteocons 아이콘 클래스명
+    private String code;   // meteocons 아이콘 클래스명
 }

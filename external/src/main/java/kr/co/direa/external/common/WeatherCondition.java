@@ -1,30 +1,29 @@
 package kr.co.direa.external.common;
 
 public enum WeatherCondition {
-    CLEAR("맑음", "meteocons-sun"),
-    CLOUDY("흐림", "meteocons-cloud"),
-    PARTLY_CLOUDY("구름많음", "meteocons-cloud-sun"),
-    RAIN("비", "meteocons-rain"),
-    SNOW("눈", "meteocons-snow"),
-    SLEET("비/눈", "meteocons-sleet"),
-
-    DRIZZLE("빗방울", "meteocons-drizzle"),
-    SNOWFLAKE("눈날림", "meteocons-snowflake"),
-    UNKNOWN("알 수 없음", "meteocons-cloud");
+    CLEAR("맑음", "01d"),
+    CLOUDY("흐림", "03d"),
+    PARTLY_CLOUDY("구름많음", "02d"),
+    RAIN("비", "09d"),
+    SNOW("눈", "13d"),
+    SLEET("비/눈", "13d"),
+    DRIZZLE("빗방울", "10d"),
+    SNOWFLAKE("눈날림", "13n"),
+    UNKNOWN("알 수 없음", "01d");
 
     private final String description;
-    private final String iconClass;
+    private final String code;
 
-    WeatherCondition(String description, String iconClass) {
+    WeatherCondition(String description, String code) {
         this.description = description;
-        this.iconClass = iconClass;
+        this.code = code;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public String getIconClass() {
-        return iconClass;
+    public String getCode() {
+        return code;
     }
 }

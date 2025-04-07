@@ -28,7 +28,7 @@ public class SecurityGatewayConfig {
             .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults())) // Keycloak JWT 인증
             .authorizeExchange(exchanges -> exchanges
                 .pathMatchers("/", "/favicon.ico", "/workspace/bookmark/health", "/actuator/**",
-                        "/logout/**", "/oauth2/**", "/login/**", "/external/ai", "/external/weather",
+                        "/logout/**", "/oauth2/**", "/login/**", "/external/ai", "/external/weather/**",
                         "/workspace/actuator/**", "/dashboard/actuator/**", "/external/actuator/**"
                 ).permitAll()
                 .pathMatchers("/admin").hasAuthority("Admin")
